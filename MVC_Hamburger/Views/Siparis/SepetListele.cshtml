@@ -1,0 +1,95 @@
+﻿@model IEnumerable<MVC_Hamburger.Models.ViewModels.SepetDTO>
+
+@{
+    ViewData["Title"] = "SepetListele";
+    Layout = "_Layout2";
+}
+@{
+    if (TempData["SepetBos"] !=null)
+    {
+        <div class="alert alert-danger m-0"> @TempData["SepetBos"]</div>
+    }
+    if (TempData["SepetSil"]!=null)
+    {
+        <div class="alert alert-danger m-0"> @TempData["SepetSil"]</div>
+    }
+}
+<h1 class="bg-dark text-white m-0">Sepet</h1>
+
+<p class="bg-dark text-white m-0">
+    <a asp-action="Burgerler" asp-controller="Home" class="btn btn-warning">Sepete Ürün Ekle</a>
+</p>
+<table class="table table-dark table-hover m-0">
+    <thead >
+        <tr>
+
+            <th>
+                <p>Menü Adı</p>
+                
+            </th>
+            <th>
+                <p>Menü İçeriği</p>
+            </th>
+            <th>
+                <p>Menü Adedi</p>
+            </th>
+            <th>
+                <p>Menü Boyu</p>
+            </th>
+
+            <th>
+                <p>Ekstra Malzemeler</p>
+            </th>
+            <th>
+                <p>Toplam Fiyatı</p>
+            </th>
+
+
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+ 
+                <td>
+                    @Html.DisplayFor(modelItem => item.SepetMenu.Ad)
+                </td>                
+                <td>
+                    @Html.DisplayFor(modelItem => item.SepetMenu.Icerik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MenuAdedi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiparisBoyu)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EkstraMalzemeDetay)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiparisFiyati) TL
+                </td>
+
+                <td>
+                    <a class="btn btn-danger" asp-action="SepettenSil" asp-controller="Siparis" asp-route-id="@item.SepetID" onclick="return confirm('Ürünü sepetten çıkarmak istediğinize emin misiniz?');">Sepetten Çıkar</a>
+                                      
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="SiparisGuncelle" asp-controller="Siparis" asp-route-id="@item.SepetID">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="row bg-dark text-white">
+<P class="alert alert-dark mr-1" style="width:200px">Sepet Tutarı:@ViewBag.ToplamFiyat TL</P>
+    <a class="alert ml-1 bg-success text-white" style="width:200px" asp-controller="Siparis" asp-action="SiparisOnayla" onclick="return confirm('Sepetteki ürünleri onaylıyor musunuz?');">Siparişi Onayla</a>
+</div>
+
+
+

@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+@model Menu
+
+<div class="hero_area text-white">
+    <div class="bg-box">
+        <img src="~/images/hero-bg-sade.jpg" alt="">
+    </div>
+    <div class="row ml-5">
+        <div class="col-md-4">
+            <h1 style="color:white">Menü Güncelle</h1>
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <img src="~/MenuResimleri/@Model?.ResimYolu" width="120px" height="90px">
+            </div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Ad" class="control-label"></label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fiyat" class="control-label"></label>
+                <input asp-for="Fiyat" class="form-control" />
+                <span asp-validation-for="Fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Icerik" class="control-label"></label>
+                <input asp-for="Icerik" class="form-control" />
+                <span asp-validation-for="Icerik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <input type="submit" value="Kaydet" class="btn btn-warning" />
+            </div>
+            </form>
+            <a asp-action="Index" class="btn btn-warning">Listeye Geri Dön</a>
+    </div>
+</div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

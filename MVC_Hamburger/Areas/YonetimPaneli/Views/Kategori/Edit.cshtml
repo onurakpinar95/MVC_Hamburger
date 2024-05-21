@@ -1,0 +1,33 @@
+﻿@model MVC_Hamburger.Models.Concrete.Kategori
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="hero_area text-white">
+    <div class="bg-box">
+        <img src="~/images/hero-bg-sade.jpg" alt="">
+    </div>
+    <div class="row ml-5">
+        <div class="col-md-4">
+            <h1 style="color:white">Kategori Güncelle</h1>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="KategoriID" />
+            <div class="form-group">
+                <label asp-for="KategoriAdi" class="control-label"></label>
+                <input asp-for="KategoriAdi" class="form-control" />
+                <span asp-validation-for="KategoriAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-warning" />
+            </div>
+        </form>
+            <a asp-action="Index" class="btn btn-warning">Listeye Geri Dön</a>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

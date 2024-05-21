@@ -1,0 +1,1 @@
+﻿Yönetici tarafından eklenen menü resimleri buraya yüklenmektedir. Silindiği zaman resimler siliniyor bilginize..

@@ -1,0 +1,53 @@
+﻿@using MVC_Hamburger.Areas.YonetimPaneli.Models.ViewModels
+@model MenuVM
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="hero_area text-white">
+    <div class="bg-box">
+        <img src="~/images/hero-bg-sade.jpg" alt="">
+    </div>
+    <div class="row ml-5">
+        <div class="col-md-4">
+            <h1 style="color:white">Menü Ekle</h1>
+
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" lang="tr" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MenuEkle.MenuResim" class="control-label"></label>
+                <input asp-for="MenuEkle.MenuResim" class="form-control" type="file" />
+                <span asp-validation-for="MenuEkle.MenuResim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MenuEkle.MenuAdi" class="control-label"></label>
+                <input asp-for="MenuEkle.MenuAdi" class="form-control" />
+                <span asp-validation-for="MenuEkle.MenuAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MenuEkle.MenuFiyat" class="control-label"></label>
+                <input asp-for="MenuEkle.MenuFiyat" class="form-control" />
+                <span asp-validation-for="MenuEkle.MenuFiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MenuEkle.MenuIcerik" class="control-label"></label>
+                <input asp-for="MenuEkle.MenuIcerik" class="form-control" />
+                <span asp-validation-for="MenuEkle.MenuIcerik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Ekle" class="btn btn-warning" />
+            </div>
+        </form>
+            <a asp-action="Index" class="btn btn-warning">Listeye Geri Dön</a>
+    </div>
+</div>
+
+
+
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

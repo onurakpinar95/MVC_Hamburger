@@ -1,0 +1,76 @@
+﻿@using MVC_Hamburger.Models.Enums
+@using MVC_Hamburger.Models.ViewModels
+@model SiparisVM
+@{
+    Layout = "_Layout2";
+}
+<div class="row bg-dark text-white m-0">
+<form asp-action="SepeteEkle" method="post" class="container bg-dark" enctype="multipart/form-data">
+    <div class="row bg-dark text-white m-0">
+        <!-- Sol tarafta menü listesi -->
+
+
+        <div class="col-md-6">
+            <h2>MENÜ</h2>
+            <div >
+                <img src="~/MenuResimleri/@Model.GelenMenu?.MenuResimYolu" width="100%" height="250px">
+
+                <label asp-for="SecilenMenu.Ad" class="control-label">Seçilen Menü </label>
+                <select asp-for="SecilenMenu.ID" class="form-control" asp-items="@Model.GelenMenulerSL"></select>
+                <br />
+                <label asp-for="GelenMenu.MenuIcerik">İçindekiler: @Model.GelenMenu?.MenuIcerik</label>
+                <br />
+                <label asp-for="GelenMenu.MenuFiyati">Fiyat:<b> @Model.GelenMenu?.MenuFiyati.ToString("0.##") TL</b> </label>
+
+            </div>
+            <br />
+            <div class="form-group">
+                <label>Menü Boyu Seçiniz:</label><br />
+                @foreach (Boy boy in Enum.GetValues(typeof(Boy)))
+                {
+                    @if (boy == Boy.Kucuk)
+                    {
+                        <input type="radio" asp-for="SecilenBoy" value="@boy " checked />
+                        <label for="SecilenBoy">@boy</label>
+                    }
+                    else if (boy == Boy.Orta)
+                    {
+                        <input type="radio" asp-for="SecilenBoy" value="@boy" />
+                        <label for="SecilenBoy">@boy + 10TL</label>
+                    }
+                    else if (boy == Boy.Buyuk)
+                    {
+                        <input type="radio" asp-for="SecilenBoy" value="@boy" />
+                        <label for="SecilenBoy">@boy + 20TL</label>
+                    }
+
+                }
+            </div>
+            <br />
+            <!-- Adet eklemek için input -->
+            <label asp-for="MenuAdedi">Menü Adedi Seç</label>
+            <input type="number" class="form-control" asp-for="MenuAdedi" min="1" />
+            <input type="hidden" asp-for="GelenMenu.MenuFiyati" />
+        </div>
+                
+        <!-- Sağ tarafta ekstra malzeme kategorileri -->
+        <div class="col-md-4">
+            <h2>EKSTRA MALZEMELER</h2>
+            @foreach (var emKategori in Model.EMKategoriler)
+            {
+                <input name="KategoriID" style="display:none;" />
+                <label>@emKategori.KategoriAdi</label>
+                <select class="form-control" name="SecilenEkstraMalzemeIDler">
+                    @foreach (var ekstraMalzeme in emKategori.EkstraMalzemeler)
+                    {
+                        <option value="@ekstraMalzeme.Value">@ekstraMalzeme.Text</option>
+                    }
+                </select>
+            }
+
+            <input type="submit" value="Sepete Ekle" class="btn btn-primary" />
+
+        </div>
+    </div>
+</form>
+</div>

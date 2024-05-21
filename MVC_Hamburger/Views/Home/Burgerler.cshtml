@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "_Layout2";
+}
+<section class="food_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                Menüler
+            </h2>
+        </div>
+
+        <div>
+
+            <div class="row">
+                @foreach (var item in Model.Menuler)
+                {
+                    <div class="col-sm-6 col-lg-4">
+                        <a class="img-hover" asp-route-id="@item.ID" asp-controller="Siparis" asp-action="SepeteEkle">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img src="~/MenuResimleri/@item.ResimYolu" alt="">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5>
+                                            @item.Ad
+                                        </h5>
+                                        <p>
+                                            @item.Icerik
+                                        </p>
+                                        <div class="options">
+                                            <h6>
+                                                @item.Fiyat.ToString("0.##") TL
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+            </div>
+
+
+        </div>
+    </div>
+</section>

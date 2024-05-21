@@ -1,0 +1,47 @@
+﻿@model MVC_Hamburger.Models.Concrete.Menu
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<h3 class="bg-dark text-white m-0">Bunu Silmek İstediğine Emin Misin?</h3>
+<div class="bg-dark text-white m-0">
+    
+    <dl class="row m-0">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ResimYolu)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/MenuResimleri/@Model?.ResimYolu" width="120px" height="90px">
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Icerik)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Icerik)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete" enctype="multipart/form-data">
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-warning">Listeye Dön</a>
+    </form>
+</div>

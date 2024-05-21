@@ -1,0 +1,47 @@
+﻿@model MVC_Hamburger.Models.ViewModels.LoginVM
+
+@{
+    Layout = "_LoginLayout";
+}
+@{
+    if(TempData["Basarili"]!=null)
+    {
+        <div class="alert alert-success m-0">@TempData["Basarili"]</div>
+    }
+}
+<div class="hero_area text-white">
+    <div class="bg-box">
+        <img src="~/images/hero-bg-sade.jpg" alt="">
+    </div>
+    <div class="row ml-5">
+        <div class="col-md-4">
+            <h1 style="color:white">Giriş Yap</h1>
+
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Sifre" class="control-label"></label>
+                    <input asp-for="Sifre" class="form-control" type="password"/>
+                    <span asp-validation-for="Sifre" class="text-danger"></span>
+                </div>
+                <div class="form-group text-danger">
+                    @Html.ValidationMessage("Hata")
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Giriş Yap" class="btn btn-warning" />
+                </div>
+            </form>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<MVC_Hamburger.Models.Concrete.Siparis>
+
+@{
+    ViewData["Title"] = "Siparislerim";
+    Layout = "_Layout2";
+}
+@{
+    if (TempData["SiparisOnay"] != null)
+    {
+        <div class="alert alert-success m-0"> @TempData["SiparisOnay"]</div>
+    }
+}
+<h1 class="bg-dark text-white m-0">Gecmis Siparislerim</h1>
+
+
+<table class="table table-dark table-hover m-0">
+    <thead>
+        <tr>
+            <th>
+               <p>Sipariş Numarası</p>
+            </th>
+            <th>
+                <p>Resim</p>
+            </th>
+            <th>
+                <p>Menü Ad</p>
+            </th>
+            <th>
+                
+                <p>Toplam Fiyat</p>
+            </th>
+            <th>
+                <p>Sipariş Tarihi</p>
+            </th>
+            <th>
+                <p>Menü Boy</p>
+         
+            </th>
+
+            <th>
+                <p>Menü Adedi</p>
+            </th>
+
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+
+                <td>
+                    <img src="~/MenuResimleri/@item.Menu.ResimYolu" width="100px" height="50px" />
+                </td>
+                <td>
+                    @item.Menu.Ad
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToplamFiyat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OlusturulmaTarihi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Boy)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.MenuAdedi)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@model MVC_Hamburger.Models.Concrete.EkstraMalzeme
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="hero_area text-white">
+    <div class="bg-box">
+        <img src="~/images/hero-bg-sade.jpg" alt="">
+    </div>
+    <div class="row ml-5">
+    <div class="col-md-4">
+            <h1 style="color:white">Ekstra Malzeme Güncelle</h1>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Kategori.KategoriAdi" class="control-label"></label>
+                <select asp-for="KategoriID" class="form-control" asp-items="ViewBag.KategoriID"></select>
+                <span asp-validation-for="KategoriID" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Ad" class="control-label"></label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fiyat" class="control-label"></label>
+                <input asp-for="Fiyat" class="form-control" />
+                <span asp-validation-for="Fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-warning" />
+            </div>
+        </form>
+            <a asp-action="Index" class="btn btn-warning">Listeye Geri Dön</a>
+    </div>
+</div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

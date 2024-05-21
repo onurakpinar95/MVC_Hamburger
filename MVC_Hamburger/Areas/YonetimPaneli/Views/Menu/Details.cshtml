@@ -1,0 +1,40 @@
+﻿@model MVC_Hamburger.Models.Concrete.Menu
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<h1 class="bg-dark text-white m-0">Detay </h1>
+<div class="bg-dark text-white m-0">
+    <dl class="row m-0">
+        <dt class = "col-sm-2">
+           Resim
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/MenuResimleri/@Model?.ResimYolu" width="120px" height="90px">
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Icerik)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Icerik)
+        </dd>
+    </dl>
+</div>
+<div class="bg-dark text-white m-0">
+    <a asp-action="Edit" asp-route-id="@Model?.ID" class="btn btn-warning">Düzenle</a> |
+    <a asp-action="Index" class="btn btn-warning">Listeye Dön</a>
+</div>
+
